@@ -4,7 +4,7 @@ class RootController
 {
     constructor()
     {
-        this.indices = [...Array(1000).keys()].map(i => {return {index: i}});
+        this.indices = [...Array(1000).keys()];
     }
 }
 
@@ -20,19 +20,6 @@ class ComponentController
         while (Date.now() < startTime + 1) {}
         return this.index;
     }
-
-    style()
-    {
-        var match = String(this.index).includes(this.search);
-        if(match || !this.search)
-        {
-            return {};
-        }
-        else
-        {            
-            return { display: "none" };
-        }
-    }
 }
 
 app.controller("RootController", RootController);
@@ -41,11 +28,10 @@ app.component("component",
         controller: ComponentController,
         controllerAs: "vm",
         template: `
-            <span ng-style="vm.style()">{{::vm.getMessage()}}</span>
+            {{vm.getMessage()}}
         `,
         bindings: {
-            index: "<",
-            search: "<"
+            index: "<"
         }
     }
 );

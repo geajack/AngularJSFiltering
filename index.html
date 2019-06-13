@@ -6,7 +6,7 @@
     <script src="main.js"></script>
 </head>
 <body ng-app="app" ng-controller="RootController as vm">
-    Not bound: <input type="text" ng-model="vm.search" /> <br />
-    <component ng-repeat="i in vm.indices" index="i.index" search="vm.search"></component>
+    <input type="text" ng-model="vm.search" /> <br />
+    <component ng-repeat="i in vm.indices | filter:vm.search" index="i"></component>
 </body>
 </html>
